@@ -29,7 +29,7 @@ namespace Perceptron_1
         //Если равно то используем значения весов  в слудющей линии и рассчитываем по той же формуле
         //Иначе мы должны посчитать значения весов по формуле
         //
-       
+       //input 2 values : x1,x2 -> gets the outputs with S=x1w1+x2w2-T , {S<0 S>0}
 
 
         int[,] inputSamples = new int[,]{
@@ -148,36 +148,39 @@ namespace Perceptron_1
 
         }
         private void button2_Click(object sender, EventArgs e)
-        {
+        {          
             PlotView pv = new PlotView();
-            pv.Location = new Point(0, 0);
-            pv.Size = new Size(500, 400);
-            
-            
+            pv.Location = new Point(0,0);
+            pv.Size = new Size(550, 500);
+                             
             this.Controls.Add(pv);
 
             pv.Model = new PlotModel { Title = "Perceptron's separation line" };
             FunctionSeries fs = new FunctionSeries();
-            //fs.Points.Add(new OxyPlot.DataPoint(x1, 0));
-            //fs.Points.Add(new OxyPlot.DataPoint(0, x2)); 
+           
             
             for(int i = 0; i < 2; i++) 
             {              
                 fs.Points.Add(new OxyPlot.DataPoint(tab[i,0], tab[i, 1]));              
             }
 
-            //OxyPlot.Axes.LinearAxis fAxis = new LinearAxis(OxyPlot.Axes.AxisPosition.Left, 0.0, 15.0);
-            //OxyPlot.Axes.LinearAxis aAxis = new  LinearAxis(OxyPlot.Axes.AxisPosition.Right, 0.0, 20.0);
+           
             pv.Model.Series.Add(fs);
 
-            ScatterSeries sc = new ScatterSeries();          
-            sc.Points.Add(new ScatterPoint(inputSamples[0, 0], inputSamples[0, 1]));
-            sc.Points.Add(new ScatterPoint(inputSamples[1, 0], inputSamples[1, 1]));
-            sc.Points.Add(new ScatterPoint(inputSamples[2, 0], inputSamples[2, 1]));
-            sc.Points.Add(new ScatterPoint(inputSamples[3, 0], inputSamples[3, 1]));
+            ScatterSeries sc1 = new ScatterSeries { Title="1", MarkerStroke=OxyColor.FromRgb(255, 1, 0), MarkerType = MarkerType.Plus};
+            ScatterSeries sc2 = new ScatterSeries { Title = "1", MarkerStroke = OxyColor.FromRgb(255, 1, 0), MarkerType = MarkerType.Plus };
+            ScatterSeries sc3 = new ScatterSeries { Title = "0", MarkerStroke = OxyColor.FromRgb(0, 1, 0), MarkerType = MarkerType.Plus };
+            ScatterSeries sc4 = new ScatterSeries { Title = "0", MarkerStroke = OxyColor.FromRgb(0, 1, 0), MarkerType = MarkerType.Plus };
+            sc1.Points.Add(new ScatterPoint(inputSamples[0, 0], inputSamples[0, 1]));
+            sc2.Points.Add(new ScatterPoint(inputSamples[1, 0], inputSamples[1, 1]));
+            sc3.Points.Add(new ScatterPoint(inputSamples[2, 0], inputSamples[2, 1]));
+            sc4.Points.Add(new ScatterPoint(inputSamples[3, 0], inputSamples[3, 1]));
            
-            pv.Model.Series.Add(sc);
-            
+            pv.Model.Series.Add(sc1);
+            pv.Model.Series.Add(sc2);
+            pv.Model.Series.Add(sc3);
+            pv.Model.Series.Add(sc4);
+
         }
 
        
