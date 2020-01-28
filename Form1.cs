@@ -17,19 +17,14 @@ namespace Perceptron_1
 
         }
 
-       // Если у!=е в одной строке то значения w1,w2,Т считать по формуле ниже
+       
         // w1(t+1)=w1(t)-alpha*x1*(y-e)
         // w2(t+1)=w2(t)-alpha*x2*(y-e)
         // T(t+1)=T(t)+alpha *(y-e)
         // else  
         // S=w1*x1+w2*x2-T
 
-        //Preceptron logic
-        //Нам нужно считать сумму S  на первом шаге и дальше проверить ровно ли значение designed otput значению real otput
-        //Если равно то используем значения весов  в слудющей линии и рассчитываем по той же формуле
-        //Иначе мы должны посчитать значения весов по формуле
-        //
-       //input 2 values : x1,x2 -> gets the outputs with S=x1w1+x2w2-T , {S<0 S>0}
+      
 
 
         int[,] inputSamples = new int[,]{
